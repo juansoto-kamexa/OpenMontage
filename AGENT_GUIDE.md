@@ -4,6 +4,85 @@ Start here. This is the complete operating guide and agent contract for OpenMont
 
 For architecture, key files, and conventions see [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md).
 
+For all PIRAXE fork planning, architecture, provider, or implementation work, also read [`docs/piraxe/README.md`](docs/piraxe/README.md) and follow its mandatory reading order. The live branch, active plan, next action, and blockers are recorded in [`docs/piraxe/STATUS.md`](docs/piraxe/STATUS.md). These repository files are the durable handoff between agents; chat history is not the source of truth.
+
+For PIRAXE software/build steps, use the project-local [Spec](.agents/skills/spec/SKILL.md), [Inplement](.agents/skills/inplement/SKILL.md), and [Commit](.agents/skills/commit/SKILL.md) skills with [`BUILD_WORKFLOW.md`](docs/piraxe/BUILD_WORKFLOW.md) and [`CURRENT_STEP.md`](docs/piraxe/CURRENT_STEP.md). These three `.agents/skills/` entries govern engineering work, not media-provider execution. Their fresh-agent G1/G2/G3 reviews are mandatory blocking gates; the advisory production-review/max-round policy later in this guide does not apply to them. A missing, failed or stale engineering review never becomes an automatic pass.
+
+# PIRAXE Fork Mandate
+
+## Purpose
+
+This repository is a fork of OpenMontage being adapted into a production system governed by the PIRAXE advertising workflow.
+
+OpenMontage provides the production infrastructure. PIRAXE governs the creative workflow, decision-making process, and production artifacts.
+
+## Planned integrations
+
+The fork will add:
+
+- Paipu BK integration for video generation.
+- Nano Banana API handling for image generation and image editing.
+- A dedicated PIRAXE production pipeline.
+- PIRAXE-specific stages, artifacts, review procedures, and correction workflows.
+
+Do not assume these integrations already exist. Inspect the repository before proposing file paths or implementation details.
+
+## PIRAXE workflow principles
+
+When handling an advertising or film-production request:
+
+- Help extract the brief from the information available.
+- Do not require the user to arrive with a completed brief.
+- Establish the audience and situation, objective, single takeaway, product role and evidence, tone, and distribution constraints.
+- Ask only for missing information that would materially change the result.
+- Develop one principal creative direction.
+- Offer alternatives only when there is a genuine unresolved decision.
+- Keep product claims grounded in available evidence.
+- Carry decisions consistently through concept development, shot breakdown, references, prompt compilation, generation, footage review, and correction.
+
+The existing OpenMontage cinematic pipeline must not be adopted unchanged when its assumptions conflict with these principles.
+
+## Architectural direction
+
+Preserve useful OpenMontage separation between:
+
+- Pipeline definitions.
+- Stage instructions and skills.
+- Provider tools and adapters.
+- Artifact schemas.
+- Approval checkpoints.
+- Cost governance.
+- Backlot UI.
+- Media-processing infrastructure.
+- Post-production and rendering systems.
+
+Expected additions may include:
+
+- A dedicated PIRAXE pipeline definition.
+- PIRAXE stage instructions.
+- A Paipu BK provider adapter.
+- Nano Banana image-generation and image-editing support.
+- Artifact schemas for briefs, shot breakdowns, reference manifests, generation jobs, and footage reviews.
+
+Treat these as architectural intentions until repository inspection confirms the appropriate extension points.
+
+## Working method
+
+For new architectural or integration work:
+
+1. Follow the existing OpenMontage routing rules first.
+2. Inspect the relevant implementation and existing provider conventions.
+3. Separate verified repository facts from recommendations.
+4. Identify the smallest compatible extension points.
+5. Propose an implementation and validation plan.
+6. Modify code only when the user’s request includes implementation.
+7. Preserve existing behavior unless a change is explicitly required.
+8. Run the relevant checks after making changes.
+
+Do not commit credentials. Use environment variables and the repository’s established configuration patterns for API keys and secrets.
+
+When adding a provider, include appropriate error handling, configuration validation, async-job handling where required, cost or usage reporting when supported, and focused tests.
+
 ## First Interaction — Onboarding
 
 When the user's first message is vague, exploratory, or asks what you can do ("make me a video", "what can you do?", "help me create something", "I want to make content"), read the onboarding skill **before** doing anything else:

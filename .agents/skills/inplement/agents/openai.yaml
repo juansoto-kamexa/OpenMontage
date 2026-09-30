@@ -1,0 +1,4 @@
+interface:
+  display_name: "Inplement"
+  short_description: "Implement and independently verify the current step"
+  default_prompt: "Use $inplement to implement the current reviewed PIRAXE OpenMontage step, run its checks, and obtain an independent implementation review."

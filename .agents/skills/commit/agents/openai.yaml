@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit"
+  short_description: "Commit the reviewed step and archive its completion"
+  default_prompt: "Use $commit to review and commit the completed current PIRAXE OpenMontage step on its correct branch, preserve its archive, and clear the current-step slot. Push only if I have already authorized it."

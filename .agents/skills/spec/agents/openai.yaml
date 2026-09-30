@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spec"
+  short_description: "Specify a PIRAXE build step with independent review"
+  default_prompt: "Use $spec to create or refine the current PIRAXE OpenMontage build-step specification and obtain an independent specification review."

@@ -2,6 +2,12 @@
 
 This is the single source of truth for project architecture and conventions. All platform-specific agent files (CLAUDE.md, CODEX.md, CURSOR.md, COPILOT.md) should point here instead of duplicating this content.
 
+## PIRAXE Fork Overlay
+
+This file describes the verified OpenMontage foundation. Fork-specific intent, architecture changes, roadmap, current status, decisions, branch policy, and executable plans live in [`docs/piraxe/`](docs/piraxe/README.md).
+
+Before changing the PIRAXE fork, read the live [`STATUS.md`](docs/piraxe/STATUS.md) and its named active plan. Update those files at handoff so future agents do not depend on chat history.
+
 ## Identity
 
 OpenMontage is an open-source, AI-orchestrated video production platform.
